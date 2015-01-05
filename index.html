@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport"    content="width=device-width, initial-scale=1" />
+	<meta name="description" content="Blah." />
+	<meta name="author"      content="Ken Sugiura" />
+
+	<!--
+
+	Nice Calendar
+
+		A minimal calendar builder.
+
+	Contributors:
+		reddit.com/u/krikienoid
+
+	MIT License 2014
+
+	-->
+
+	<title>Nice Calendar</title>
+
+	<!-- Libraries -->
+	<link type="text/css" rel="stylesheet" href="spectrum/spectrum.css" />
+	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="spectrum/spectrum.js"></script>
+	<script type="text/javascript" src="js/font.js"></script>
+
+	<!-- Main -->
+	<link   type="text/css" rel="stylesheet" href="css/nicecalendar.css" />
+	<script type="text/javascript" src="js/nicecalendar.js"></script>
+</head>
+
+<body>
+	<div class="wrapper-main" data-role="page">
+		<div class="wrapper-head">
+			<div class="wrapper-head-title">
+				<h1>Nice Calendar</h1>
+				<p>
+					Year: <input class="nice-calendar-input" type="text" size="4" maxlength="4" id="nice-calendar-year" />
+					<input class="nice-calendar-input" type="button" value="Print" id="nice-calendar-print" />
+				</p>
+			</div>
+			<div class="wrapper-head-options">
+				<div id="nice-calendar-options"></div>
+			</div>
+		</div>
+		<div class="wrapper-body">
+			<div class="wrapper-view" id="nice-calendar-view"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).ready(function () {font.setup();});
+		$(document).ready(function () {niceCalendar.init();});
+	</script>
+</body>
+
+</html>
