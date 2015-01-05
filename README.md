@@ -3,7 +3,7 @@
 ###### A minimal calendar builder.
 
 
-[Demo HERE](http://krikienoid.github.io/TextBubbles2/index.html)
+[Demo HERE](http://krikienoid.github.io/nicecalendar/index.html)
 
 
 ## Printable Calendar Maker.
