@@ -415,7 +415,7 @@
 						return function () {setProp(ruleName, cssProp, (this.checked)? "italic" : "normal");};
 					}
 					else {
-						return function () {setProp(cssProp, this.value);};
+						return function () {setProp(ruleName, cssProp, this.value);};
 					}
 				})(this, cssPropOpts[i].cssProp)
 			)
