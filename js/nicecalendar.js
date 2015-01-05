@@ -139,7 +139,6 @@
 		initUI();
 		initCalendar();
 		applyCustomStyles(cssDefaultSettings);
-		console.log(cssStyleInterface);
 	}
 
 	function initCustomStyleRules () {
@@ -577,7 +576,8 @@
 	// Export
 
 	window.niceCalendar =  {
-		init : init
+		init    : init,
+		setProp : setProp
 	};
 
 })(window, document, jQuery, font);
