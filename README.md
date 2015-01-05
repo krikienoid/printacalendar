@@ -1,4 +1,4 @@
-# Neat Calendar
+# Printable Calendar Maker
 
 ###### A minimal calendar builder.
 
