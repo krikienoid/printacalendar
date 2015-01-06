@@ -80,17 +80,18 @@
 			padding : "0.375in"
 		},
 		headerframe : {
-			height  : "0.5in",
+			height  : "10%",
 		},
 		innerframe : {
 			width   : "100%",
-			height  : "4.25in"
+			height  : "90%"
 		},
 		weekframe : {
 			height       : "0.25in",
 			marginBottom : "0.125in"
 		},
 		gridframe : {
+			width        : "100%",
 			height       : "3.25in"
 		},
 		headermonth : {
@@ -204,7 +205,7 @@
 			{cssProp : "height",  label : "Page Height",  method : "length"},
 			{cssProp : "padding", label : "Page Margins", method : "length"}
 		]);
-		cssStyleInterface["innerframe"].$inputs = createInputs("innerframe", "Grid", [
+		cssStyleInterface["gridframe"].$inputs = createInputs("gridframe", "Grid", [
 			{cssProp : "width",           label : "Grid Width",       method : "length"},
 			{cssProp : "height",          label : "Grid Height",      method : "length"},
 			{cssProp : "backgroundColor", label : "Background Color", method : "color"}
