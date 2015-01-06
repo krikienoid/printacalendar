@@ -169,17 +169,31 @@
 		border-left-width : 1px;
 		border-top-width  : 1px;
 		color             : white;
-		line-height       : 12pt;
+		line-height       : 18pt;
 	}
 
 	.nice-calendar-opts-header {
-		margin-bottom : 4px;
-		color         : white;
+		padding : 4px 8px;
+		color   : gainsboro;
+	}
+
+	.nice-calendar-opts-header > a {
+		cursor  : pointer;
+	}
+
+	.nice-calendar-opts-header > a:hover,
+	.nice-calendar-opts-section.focus > .nice-calendar-opts-header > a:hover {
+		color   : lightcoral;
+	}
+
+	.nice-calendar-opts-section.focus > .nice-calendar-opts-header {
+		color   : white;
 	}
 
 	.nice-calendar-opts-section.focus > .nice-calendar-opts-group {
-		height  : auto;
-		padding : 4px 16px;
+		height       : auto;
+		padding      : 4px 16px;
+		border-color : white;
 	}
 
 	/* Inputs */
@@ -204,6 +218,7 @@
 		background-color : gainsboro;
 		border-color     : gainsboro;
 		color            : black;
+		cursor           : pointer;
 		vertical-align   : top;
 	}
 
@@ -384,6 +399,7 @@
 	background-color : white;
 }
 
+.nice-calendar-innerframe,
 .nice-calendar-innerdayframe {
 	float    : none;
 	position : relative;
@@ -433,7 +449,7 @@
 }
 
 .nice-calendar-dayframe {
-	height  : 20%;
+	height  : 16.6667%;
 }
 
 .nice-calendar-dayframe.blank {

@@ -75,23 +75,23 @@
 
 	var cssDefaultSettings = {
 		pageframe : {
-			width   : "6in",
-			height  : "4in",
-			padding : "0.25in"
+			width   : "8in",
+			height  : "5in",
+			padding : "0.375in"
 		},
 		headerframe : {
 			height  : "0.5in",
 		},
 		innerframe : {
-			width   : "5.5in",
-			height  : "3in"
+			width   : "100%",
+			height  : "4.25in"
 		},
 		weekframe : {
 			height       : "0.25in",
-			marginBottom : "0in"
+			marginBottom : "0.125in"
 		},
 		gridframe : {
-			height       : "2.5in"
+			height       : "3.25in"
 		},
 		headermonth : {
 			top        : "0in",
@@ -100,7 +100,7 @@
 			fontWeight : "bold",
 			fontStyle  : "normal",
 			fontSize   : "20pt",
-			color      : "dimgray"
+			color      : "black"
 		},
 		headeryear : {
 			top        : "0in",
@@ -109,28 +109,32 @@
 			fontWeight : "normal",
 			fontStyle  : "italic",
 			fontSize   : "24pt",
-			color      : "crimson"
+			color      : "dimgray"
 		},
 		weekdayframe : {
 			padding         : "4pt",
-			backgroundColor : "dimgray",
+			backgroundColor : "black",
 			color           : "white",
 			fontFamily      : "Georgia",
 			fontWeight      : "normal",
 			fontStyle       : "normal",
 			fontSize        : "10pt"
 		},
+		dayframe      : {
+			padding : "1.5pt"
+		},
 		innerdayframe : {
+			backgroundColor   : "gainsboro",
 			borderStyle       : "solid",
-			borderTopWidth    : "3pt",
+			borderTopWidth    : "6pt",
 			borderRightWidth  : "0pt",
 			borderBottomWidth : "0pt",
-			borderLeftWidth   : "1pt",
-			borderColor       : "darkgray"
+			borderLeftWidth   : "0pt",
+			borderColor       : "dimgray"
 		},
 		date : {
 			top        : "0in",
-			left       : "0in",
+			left       : "2pt",
 			fontFamily : "Georgia",
 			fontWeight : "normal",
 			fontStyle  : "normal",
@@ -200,21 +204,34 @@
 			{cssProp : "height",  label : "Page Height",  method : "length"},
 			{cssProp : "padding", label : "Page Margins", method : "length"}
 		]);
-		cssStyleInterface["innerframe"].$inputs = createInputs("innerframe", "Inner Box", [
-			{cssProp : "width",           label : "Page Width",  method : "length"},
-			{cssProp : "height",          label : "Page Height", method : "length"},
-			{cssProp : "backgroundColor", label : "Color",       method : "color"}
+		cssStyleInterface["innerframe"].$inputs = createInputs("innerframe", "Grid", [
+			{cssProp : "width",           label : "Grid Width",       method : "length"},
+			{cssProp : "height",          label : "Grid Height",      method : "length"},
+			{cssProp : "backgroundColor", label : "Background Color", method : "color"}
 		]);
 		cssStyleInterface["innerdayframe"].$inputs = createInputs("innerdayframe", "Cell", [
-			{cssProp : "backgroundColor",   label : "Color",         method : "color"},
-			{cssProp : "borderTopWidth",    label : "Border Top",    method : "length"},
-			{cssProp : "borderLeftWidth",   label : "Border Left",   method : "length"},
-			{cssProp : "borderRightWidth",  label : "Border Right",  method : "length"},
-			{cssProp : "borderBottomWidth", label : "Border Bottom", method : "length"},
-			{cssProp : "borderStyle",       label : "Border Style",  method : "borderStyle"},
-			{cssProp : "borderColor",       label : "Border Color",  method : "color"}
+			{cssProp : "backgroundColor",   label : "Background Color", method : "color"},
+			{cssProp : "borderTopWidth",    label : "Border Top",       method : "length"},
+			{cssProp : "borderLeftWidth",   label : "Border Left",      method : "length"},
+			{cssProp : "borderRightWidth",  label : "Border Right",     method : "length"},
+			{cssProp : "borderBottomWidth", label : "Border Bottom",    method : "length"},
+			{cssProp : "borderStyle",       label : "Border Style",     method : "borderStyle"},
+			{cssProp : "borderColor",       label : "Border Color",     method : "color"}
 		]);
-		cssStyleInterface["headermonth"].$inputs = createInputs("headermonth", "Month Head", [
+		cssStyleInterface["dayframe"].$inputs = createInputs("dayframe", "Cell Spacing", [
+			{cssProp : "padding",         label : "Padding",          method : "length"}
+		]);
+		cssStyleInterface["date"].$inputs = createInputs("date", "Cell Number", [
+			{cssProp : "left",            label : "Position X",       method : "length"},
+			{cssProp : "top",             label : "Position Y",       method : "length"},
+			{cssProp : "backgroundColor", label : "Background Color", method : "color"},
+			{cssProp : "color",           label : "Font Color",       method : "color"},
+			{cssProp : "fontFamily",      label : "Font",             method : "length"},
+			{cssProp : "fontWeight",      label : "Bold",             method : "fontWeight"},
+			{cssProp : "fontStyle",       label : "Italic",           method : "fontStyle"},
+			{cssProp : "fontSize",        label : "Font Size",        method : "length"}
+		]);
+		cssStyleInterface["headermonth"].$inputs = createInputs("headermonth", "Header Month", [
 			{cssProp : "left",       label : "Position X", method : "length"},
 			{cssProp : "top",        label : "Position Y", method : "length"},
 			{cssProp : "color",      label : "Font Color", method : "color"},
@@ -223,7 +240,7 @@
 			{cssProp : "fontStyle",  label : "Italic",     method : "fontStyle"},
 			{cssProp : "fontSize",   label : "Font Size",  method : "length"}
 		]);
-		cssStyleInterface["headeryear"].$inputs = createInputs("headeryear", "Year", [
+		cssStyleInterface["headeryear"].$inputs = createInputs("headeryear", "Header Year", [
 			{cssProp : "left",       label : "Position X", method : "length"},
 			{cssProp : "top",        label : "Position Y", method : "length"},
 			{cssProp : "color",      label : "Font Color", method : "color"},
@@ -233,36 +250,23 @@
 			{cssProp : "fontSize",   label : "Font Size",  method : "length"}
 		]);
 		cssStyleInterface["weekdayframe"].$inputs = createInputs("weekdayframe", "Week Days", [
-			{cssProp : "padding",         label : "Padding",    method : "length"},
-			{cssProp : "backgroundColor", label : "Color",      method : "color"},
-			{cssProp : "color",           label : "Font Color", method : "color"},
-			{cssProp : "fontFamily",      label : "Font",       method : "length"},
-			{cssProp : "fontWeight",      label : "Bold",       method : "fontWeight"},
-			{cssProp : "fontStyle",       label : "Italic",     method : "fontStyle"},
-			{cssProp : "fontSize",        label : "Font Size",  method : "length"}
-		]);
-		cssStyleInterface["date"].$inputs = createInputs("date", "Cell Date", [
-			{cssProp : "left",            label : "Position X", method : "length"},
-			{cssProp : "top",             label : "Position Y", method : "length"},
-			{cssProp : "backgroundColor", label : "Color",      method : "color"},
-			{cssProp : "color",           label : "Font Color", method : "color"},
-			{cssProp : "fontFamily",      label : "Font",       method : "length"},
-			{cssProp : "fontWeight",      label : "Bold",       method : "fontWeight"},
-			{cssProp : "fontStyle",       label : "Italic",     method : "fontStyle"},
-			{cssProp : "fontSize",        label : "Font Size",  method : "length"}
+			{cssProp : "padding",         label : "Padding",          method : "length"},
+			{cssProp : "backgroundColor", label : "Background Color", method : "color"},
+			{cssProp : "color",           label : "Font Color",       method : "color"},
+			{cssProp : "fontFamily",      label : "Font",             method : "length"},
+			{cssProp : "fontWeight",      label : "Bold",             method : "fontWeight"},
+			{cssProp : "fontStyle",       label : "Italic",           method : "fontStyle"},
+			{cssProp : "fontSize",        label : "Font Size",        method : "length"}
 		]);
 
-		initColorInputs();
-	}
-
-	function initColorInputs () {
 		// NOTE: spectrum.js only works on element already appended to the DOM
 		// Delay spectrum init until after all inputs have been appended to the DOM
 		$("input[type='color']").each(function (i, input) {
 			var $input = $(input);
 			$input.spectrum({
 				change : function () {$input.val($input.spectrum("get").toHexString());},
-				showInput : true
+				allowEmpty : true,
+				showInput  : true
 			});
 		});
 	}
