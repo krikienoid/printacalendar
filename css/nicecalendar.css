@@ -56,9 +56,6 @@
 	.wrapper-head {
 		position         : absolute;
 		z-index          : 1;
-		padding-top      : 100px;
-		overflow-x       : hidden;
-		overflow-y       : auto;
 		background-color : dimgray;
 		color            : white;
 		box-shadow       : 4px 4px 16px rgba(0, 0, 0, 0.8);
@@ -70,11 +67,6 @@
 		padding : 8px 16px;
 	}
 
-	.wrapper-head-title {
-		height     : 100px;
-		margin-top : -100px;
-	}
-
 	.wrapper-head-options {
 		height     : 100%;
 		overflow-y : auto;
@@ -82,7 +74,6 @@
 
 	/* Body */
 
-	.wrapper-body,
 	.wrapper-view {
 		overflow         : auto;
 		background-color : gainsboro;
@@ -100,6 +91,12 @@
 		height      : 100%;
 		margin-top  : 0;
 		margin-left : -280px;
+		padding-top : 100px;
+	}
+
+	.wrapper-head-title {
+		height     : 100px;
+		margin-top : -100px;
 	}
 
 	/* //// Styles //// */
@@ -123,7 +120,7 @@
 	}
 
 	.nice-calendar-input,
-	.nice-calendar-opts-title {
+	.nice-calendar-opts-header {
 		font-size : 12pt ;
 	}
 
@@ -135,27 +132,39 @@
 		font-size : 24pt;
 	}
 
-	/* Titles */
-
-	h1 {
-		margin : 8px 0;
-		color  : white;
-	}
+	/* Header Section */
 
 	.wrapper-head-title {
 		background-color : black;
 		border-bottom    : 2px solid white;
 	}
 
+	.nice-calendar-header,
+	.nice-calendar-year {
+		margin : 8px 0;
+	}
+
+	.nice-calendar-header {
+		border              : 0 dotted white;
+		border-bottom-width : 1px;
+		color               : white;
+	}
+
+	.nice-calendar-input.show-opts {
+		display : none;
+	}
+
 	/* Input Section */
 
 	.nice-calendar-opts-section {
+		float  : left
 		width  : 100%;
 		margin : 16px 0;
 	}
 
 	.nice-calendar-opts-group {
-		padding           : 4px 16px;
+		height            : 0;
+		padding           : 0;
 		border            : 0 solid gainsboro;
 		border-left-width : 1px;
 		border-top-width  : 1px;
@@ -163,30 +172,33 @@
 		line-height       : 12pt;
 	}
 
-	.nice-calendar-opts-title {
+	.nice-calendar-opts-header {
 		margin-bottom : 4px;
 		color         : white;
+	}
+
+	.nice-calendar-opts-section.focus > .nice-calendar-opts-group {
+		height  : auto;
+		padding : 4px 16px;
 	}
 
 	/* Inputs */
 
 	select,
 	.nice-calendar-input {
-		height    : 24px;
-		margin    : 2px;
-		padding   : 0 8px;
+		height           : 24px;
+		margin           : 2px;
+		padding          : 0 8px;
 		background-color : #333;
 		border           : 1px solid white;
 		border-radius    : 4px;
-		color     : white;
+		color            : white;
 	}
 
 	select,
 	.nice-calendar-input.opts {
 		height    : 20px;
 	}
-
-	.nice-calendar-input[type="text"] {}
 
 	.nice-calendar-input[type="button"] {
 		background-color : gainsboro;
@@ -219,7 +231,7 @@
 		max-width : 50%;
 	}
 
-	.nice-calendar-input[type="range"] {}
+	/* Override spectrum.js styles */
 
 	.nice-calendar-opts-section .sp-replacer {
 		height  : 20px;
@@ -243,38 +255,46 @@
 
 	.wrapper-head {
 		width       : 100%;
-		height      : 120px;
+		height      : 60px;
 		margin-top  : -120px;
 		margin-left : 0;
-		padding-top : 0;
-		overflow    : hidden;
+		padding-top : 60px;
+	}
+
+	.wrapper-head.open {
+		height      : 100%;
 	}
 
 	.wrapper-head-title {
-		height  : 60px;
-		padding : 0;
+		height     : 60px;
+		margin-top : -60px;
 	}
 
 	/* Style */
 
-	.wrapper-head-title {
-		margin-top : 0;
+	.nice-calendar-header,
+	.nice-calendar-year {
+		display     : block;
+		float       : left;
+		height      : 100%;
+		white-space : nowrap;
 	}
 
-	.wrapper-head-title > h1,
-	.wrapper-head-title > p {
-		display        : block;
-		float          : left;
-		height         : 100%;
-		margin         : 0;
-		padding        : 16px;
-		height         : 100%;
-		white-space    : nowrap;
+	.nice-calendar-header {
+		padding-right      : 16px;
+		border-width       : 0;
+		border-right-width : 1px;
+		font-size          : 16pt;
 	}
 
+	.nice-calendar-year {
+		position     : absolute;
+		right        : 16px;
+		padding-left : 24px;
+	}
 
-	.wrapper-head-title > h1 {
-		font-size      : 16pt;
+	.nice-calendar-input.show-opts {
+		display : inline-block;
 	}
 
 }
@@ -283,21 +303,15 @@
 
 	/* Narrow Layout */
 
-	.wrapper-head-title {
-		padding-left : 80px;
+	.nice-calendar-header {
+		width       : 80px;
+		font-size   : 10pt;
+		white-space : normal;
 	}
 
-	.wrapper-head-title > h1 {
-		font-size    : 10pt;
-		width        : 80px;
-		margin-left  : -80px;
-		white-space  : normal;
-	}
-
-	.wrapper-head-title > p {
-		font-size : 14pt;
-		width     : 100%;
-		padding-left : 24px;
+	.nice-calendar-year {
+		width       : auto;
+		font-size   : 14pt;
 	}
 
 }
@@ -318,15 +332,12 @@
 	.wrapper-main,
 	.wrapper-body,
 	.wrapper-view {
-		float    : none;
-		width    : auto;
-		height   : auto;
-		overflow : visible;
+		float      : none;
+		width      : auto;
+		height     : auto;
+		padding    : 0;
+		overflow   : visible;
 		background : none;
-	}
-
-	.wrapper-main {
-		padding : 0;
 	}
 
 	.wrapper-head {
@@ -368,20 +379,15 @@
 
 }
 
-.nice-calendar-gridframe,
-.nice-calendar-innerdayframe {
-	float    : none;
-	position : relative;
-	margin   : auto;
-}
-
 .nice-calendar-pageframe {
 	overflow         : hidden;
 	background-color : white;
 }
 
-.nice-calendar-gridframe,
 .nice-calendar-innerdayframe {
+	float    : none;
+	position : relative;
+	margin   : auto;
 	top               : 50%;
 	-moz-transform    : translateY(-50%);
 	-webkit-transform : translateY(-50%);
@@ -394,8 +400,8 @@
 
 .nice-calendar-outerframe,
 .nice-calendar-headerframe,
-.nice-calendar-weekframe,
 .nice-calendar-innerframe,
+.nice-calendar-weekframe,
 .nice-calendar-gridframe {
 	width : 100%;
 }
@@ -406,10 +412,8 @@
 
 .nice-calendar-headerframe {
 	position : relative;
-}
-
-.nice-calendar-gridframe {
-	height : 100%;
+	z-index  : 1;
+	overflow : visible;
 }
 
 .nice-calendar-headermonth,
@@ -417,8 +421,8 @@
 	position : absolute;
 }
 
-.nice-calendar-dayframe,
-.nice-calendar-weekdayframe {
+.nice-calendar-weekdayframe,
+.nice-calendar-dayframe {
 	display : block;
 	float   : left;
 	width   : 14.2857%;

@@ -13,18 +13,20 @@
  - Adjustable size
  - Printable
 
-```javascript
-/* Although the UI is pretty limited, the calendar's
- * CSS can be fully edited through the method:
- *
- * niceCalendar.setProp(cssRuleName, cssPropertyName, cssValue)
- *
- * cssRuleName can be determined via the element's className, so
- * <div class="nice-calendar-date custom">26</div> would have
- * the cssRuleName "date".
- */
+#### Note:
 
-//Example:
+Although the UI is somewhat limited, the calendar's CSS can be fully edited through the method:
+```javascript
+niceCalendar.setProp(cssRuleName, cssPropertyName, cssValue);
+```
+cssRuleName can be determined via the element's className, so
+```
+<div class="nice-calendar-date custom">26</div>
+```
+would have the cssRuleName "date".
+
+Example:
+```javascript
 niceCalendar.setProp("date", "fontFamily", "Arial");
 ```
 

@@ -82,23 +82,20 @@
 		headerframe : {
 			height  : "0.5in",
 		},
+		innerframe : {
+			width   : "5.5in",
+			height  : "3in"
+		},
 		weekframe : {
 			height       : "0.25in",
-			marginBottom : "0.125in",
-			fontFamily   : "Georgia",
-			fontSize     : "12pt"
+			marginBottom : "0in"
 		},
-		weekdayframe : {
-			padding         : "2pt",
-			backgroundColor : "dimgray",
-			color           : "white",
-			fontFamily      : "Georgia",
-			fontSize        : "10pt"
-		},
-		innerframe : {
-			height  : "2in",
+		gridframe : {
+			height       : "2.5in"
 		},
 		headermonth : {
+			top        : "0in",
+			left       : "0in",
 			fontFamily : "Georgia",
 			fontWeight : "bold",
 			fontStyle  : "normal",
@@ -106,22 +103,34 @@
 			color      : "dimgray"
 		},
 		headeryear : {
-			right      : "0",
+			top        : "0in",
+			right      : "0in",
 			fontFamily : "Georgia",
 			fontWeight : "normal",
 			fontStyle  : "italic",
 			fontSize   : "24pt",
 			color      : "crimson"
 		},
+		weekdayframe : {
+			padding         : "4pt",
+			backgroundColor : "dimgray",
+			color           : "white",
+			fontFamily      : "Georgia",
+			fontWeight      : "normal",
+			fontStyle       : "normal",
+			fontSize        : "10pt"
+		},
 		innerdayframe : {
 			borderStyle       : "solid",
 			borderTopWidth    : "3pt",
-			borderRightWidth  : "0",
-			borderBottomWidth : "0",
+			borderRightWidth  : "0pt",
+			borderBottomWidth : "0pt",
 			borderLeftWidth   : "1pt",
 			borderColor       : "darkgray"
 		},
 		date : {
+			top        : "0in",
+			left       : "0in",
 			fontFamily : "Georgia",
 			fontWeight : "normal",
 			fontStyle  : "normal",
@@ -132,13 +141,13 @@
 
 	var cssCustomSettings = {};
 
-	// Init
+	// Initialize
 
 	function init () {
 		initCustomStyleRules();
 		initUI();
 		initCalendar();
-		applyCustomStyles(cssDefaultSettings);
+		applyStyles(cssDefaultSettings);
 	}
 
 	function initCustomStyleRules () {
@@ -180,15 +189,24 @@
 			setCalendar();
 		});
 		$("#nice-calendar-print").bind("click", window.print.bind(window));
+		$("#nice-calendar-show-opts").bind("click", function () {
+			$(this).parents(".wrapper-head").toggleClass("open");
+		});
 		UI.$opts = $("#nice-calendar-options");
 
-		// Custom CSS Inputs
-		cssStyleInterface["pageframe"].inputs = new CustomStyleForm("pageframe", "Page", [
+		// Custom CSS Input Fields
+		cssStyleInterface["pageframe"].$inputs = createInputs("pageframe", "Page", [
 			{cssProp : "width",   label : "Page Width",   method : "length"},
 			{cssProp : "height",  label : "Page Height",  method : "length"},
 			{cssProp : "padding", label : "Page Margins", method : "length"}
 		]);
-		cssStyleInterface["innerdayframe"].inputs = new CustomStyleForm("innerdayframe", "Cell", [
+		cssStyleInterface["innerframe"].$inputs = createInputs("innerframe", "Inner Box", [
+			{cssProp : "width",           label : "Page Width",  method : "length"},
+			{cssProp : "height",          label : "Page Height", method : "length"},
+			{cssProp : "backgroundColor", label : "Color",       method : "color"}
+		]);
+		cssStyleInterface["innerdayframe"].$inputs = createInputs("innerdayframe", "Cell", [
+			{cssProp : "backgroundColor",   label : "Color",         method : "color"},
 			{cssProp : "borderTopWidth",    label : "Border Top",    method : "length"},
 			{cssProp : "borderLeftWidth",   label : "Border Left",   method : "length"},
 			{cssProp : "borderRightWidth",  label : "Border Right",  method : "length"},
@@ -196,33 +214,55 @@
 			{cssProp : "borderStyle",       label : "Border Style",  method : "borderStyle"},
 			{cssProp : "borderColor",       label : "Border Color",  method : "color"}
 		]);
-		cssStyleInterface["headermonth"].inputs = new CustomStyleForm("headermonth", "Month Head", [
+		cssStyleInterface["headermonth"].$inputs = createInputs("headermonth", "Month Head", [
+			{cssProp : "left",       label : "Position X", method : "length"},
+			{cssProp : "top",        label : "Position Y", method : "length"},
+			{cssProp : "color",      label : "Font Color", method : "color"},
 			{cssProp : "fontFamily", label : "Font",       method : "length"},
 			{cssProp : "fontWeight", label : "Bold",       method : "fontWeight"},
 			{cssProp : "fontStyle",  label : "Italic",     method : "fontStyle"},
-			{cssProp : "fontSize",   label : "Font Size",  method : "length"},
-			{cssProp : "color",      label : "Font Color", method : "color"}
+			{cssProp : "fontSize",   label : "Font Size",  method : "length"}
 		]);
-		cssStyleInterface["headeryear"].inputs = new CustomStyleForm("headeryear", "Year", [
+		cssStyleInterface["headeryear"].$inputs = createInputs("headeryear", "Year", [
+			{cssProp : "left",       label : "Position X", method : "length"},
+			{cssProp : "top",        label : "Position Y", method : "length"},
+			{cssProp : "color",      label : "Font Color", method : "color"},
 			{cssProp : "fontFamily", label : "Font",       method : "length"},
 			{cssProp : "fontWeight", label : "Bold",       method : "fontWeight"},
 			{cssProp : "fontStyle",  label : "Italic",     method : "fontStyle"},
-			{cssProp : "fontSize",   label : "Font Size",  method : "length"},
-			{cssProp : "color",      label : "Font Color", method : "color"}
+			{cssProp : "fontSize",   label : "Font Size",  method : "length"}
 		]);
-		cssStyleInterface["date"].inputs = new CustomStyleForm("date", "Day", [
-			{cssProp : "fontFamily", label : "Font",       method : "length"},
-			{cssProp : "fontWeight", label : "Bold",       method : "fontWeight"},
-			{cssProp : "fontStyle",  label : "Italic",     method : "fontStyle"},
-			{cssProp : "fontSize",   label : "Font Size",  method : "length"},
-			{cssProp : "color",      label : "Font Color", method : "color"}
+		cssStyleInterface["weekdayframe"].$inputs = createInputs("weekdayframe", "Week Days", [
+			{cssProp : "padding",         label : "Padding",    method : "length"},
+			{cssProp : "backgroundColor", label : "Color",      method : "color"},
+			{cssProp : "color",           label : "Font Color", method : "color"},
+			{cssProp : "fontFamily",      label : "Font",       method : "length"},
+			{cssProp : "fontWeight",      label : "Bold",       method : "fontWeight"},
+			{cssProp : "fontStyle",       label : "Italic",     method : "fontStyle"},
+			{cssProp : "fontSize",        label : "Font Size",  method : "length"}
+		]);
+		cssStyleInterface["date"].$inputs = createInputs("date", "Cell Date", [
+			{cssProp : "left",            label : "Position X", method : "length"},
+			{cssProp : "top",             label : "Position Y", method : "length"},
+			{cssProp : "backgroundColor", label : "Color",      method : "color"},
+			{cssProp : "color",           label : "Font Color", method : "color"},
+			{cssProp : "fontFamily",      label : "Font",       method : "length"},
+			{cssProp : "fontWeight",      label : "Bold",       method : "fontWeight"},
+			{cssProp : "fontStyle",       label : "Italic",     method : "fontStyle"},
+			{cssProp : "fontSize",        label : "Font Size",  method : "length"}
 		]);
 
+		initColorInputs();
+	}
+
+	function initColorInputs () {
 		// NOTE: spectrum.js only works on element already appended to the DOM
+		// Delay spectrum init until after all inputs have been appended to the DOM
 		$("input[type='color']").each(function (i, input) {
 			var $input = $(input);
 			$input.spectrum({
-				change : function () {$input.val($input.spectrum("get").toHexString());}
+				change : function () {$input.val($input.spectrum("get").toHexString());},
+				showInput : true
 			});
 		});
 	}
@@ -230,6 +270,118 @@
 	function initCalendar () {
 		UI.$year.attr("value", settings.year = (new window.Date()).getYear() + 1900);
 		setCalendar();
+	}
+
+	// Create Input Fields
+
+	function createInput (valType) {
+		var $input;
+		switch (valType) {
+			case "borderStyle" :
+				$input = $("<select />")
+					.append($("<option />").text("none").attr("selected", "selected"))
+					.append($("<option />").text("solid"))
+					.append($("<option />").text("double"))
+					.append($("<option />").text("dashed"))
+					.append($("<option />").text("dotted"))
+					.append($("<option />").text("groove"))
+					.append($("<option />").text("inset"))
+					.append($("<option />").text("outset"));
+				break;
+			case "color" :
+				$input = $("<input />")
+					.addClass("nice-calendar-input")
+					.addClass("opts")
+					.attr("type", "color");
+				break;
+			case "fontWeight" :
+			case "fontStyle" :
+				$input = $("<input />")
+					.addClass("nice-calendar-input")
+					.addClass("opts")
+					.attr("type", "checkbox");
+				break;
+			case "length" :
+				$input = $("<input />")
+					.addClass("nice-calendar-input")
+					.addClass("opts")
+					.attr("type", "text");
+				break;
+			default : 
+				$input = $("<input />")
+					.addClass("nice-calendar-input")
+					.addClass("opts")
+					.attr("type", "text");
+				break;
+		}
+		return $input;
+	}
+
+	function createInputs (ruleName, title, cssPropOpts) {
+
+		var $inputGroup  = $("<div />")
+				.addClass("nice-calendar-opts-group"),
+			$inputs      = {},
+			$input;
+
+		cssCustomSettings[ruleName] = {};
+
+		// Create input elements
+		for (var i = 0, ii = cssPropOpts.length; i < ii; i++) {
+
+			// Create input element
+			$input = createInput(cssPropOpts[i].method);
+
+			// Bind event to input
+			$input.bind(
+				"change",
+				(function (_this, cssProp) {
+					if (cssProp === "fontWeight") {
+						return function () {setProp(ruleName, cssProp, (this.checked)? "bold" : "normal");};
+					}
+					else if (cssProp === "fontStyle") {
+						return function () {setProp(ruleName, cssProp, (this.checked)? "italic" : "normal");};
+					}
+					else {
+						return function () {setProp(ruleName, cssProp, this.value);};
+					}
+				})(this, cssPropOpts[i].cssProp)
+			)
+
+			// Append input and label to group div
+			$inputGroup.append(
+				$("<p />")
+					.text(cssPropOpts[i].label + ": ")
+					.append($inputs[cssPropOpts[i].cssProp] = $input)
+			);
+		}
+
+		// Append group div to page
+		UI.$opts
+			.append(
+				$("<div />")
+					.addClass("nice-calendar-opts-section")
+					.append(
+						$("<h2 />")
+						.addClass("nice-calendar-opts-header")
+						.append(
+							$("<a />")
+							.text(title)
+							.bind("click", function () {
+								var $optsSectionFocus = $(this).parents(".nice-calendar-opts-section"),
+									hadFocus = $optsSectionFocus.hasClass("focus");
+								$(".nice-calendar-opts-section").removeClass("focus");
+								if (!hadFocus) {
+									$optsSectionFocus.addClass("focus");
+								}
+							})
+						)
+					)
+					.append($inputGroup)
+			);
+
+		return $inputs;
+
 	}
 
 	// Generate Calendar
@@ -283,11 +435,11 @@
 										.text(settings.year)
 								)
 						)
-						.append(createWeekFrame())
 						.append(
 							$("<div />")
 								.addClass(CSS_CLASS_NAMES.innerframe)
 								.addClass(CSS_CLASS_NAMES.custom)
+								.append(createWeekFrame())
 								.append($newGridFrame)
 						)
 				)
@@ -334,120 +486,14 @@
 
 	// Set Styles
 
-	function createInput (valType) {
-		var $input;
-		switch (valType) {
-			case "borderStyle" :
-				$input = $("<select />")
-					.append($("<option />").text("none").attr("selected", "selected"))
-					.append($("<option />").text("solid"))
-					.append($("<option />").text("double"))
-					.append($("<option />").text("dashed"))
-					.append($("<option />").text("dotted"))
-					.append($("<option />").text("groove"))
-					.append($("<option />").text("inset"))
-					.append($("<option />").text("outset"));
-				break;
-			case "color" :
-				$input = $("<input />")
-					.addClass("nice-calendar-input")
-					.addClass("opts")
-					.attr("type", "color");
-				break;
-			case "fontWeight" :
-			case "fontStyle" :
-				$input = $("<input />")
-					.addClass("nice-calendar-input")
-					.addClass("opts")
-					.attr("type", "checkbox");
-				break;
-			case "length" :
-				$input = $("<input />")
-					.addClass("nice-calendar-input")
-					.addClass("opts")
-					.attr("type", "text");
-				break;
-			default : 
-				$input = $("<input />")
-					.addClass("nice-calendar-input")
-					.addClass("opts")
-					.attr("type", "text");
-				break;
-		}
-		return $input;
-	}
-
-	function applyCustomStyles (cssSettings) {
-		for (var r in cssSettings)
-		if (cssSettings.hasOwnProperty(r)) {
-			for (var p in cssSettings[r])
-			if (cssSettings[r].hasOwnProperty(p)) {
-				setProp(r, p, cssSettings[r][p]);
-			}
-		}
-	}
-
-	function CustomStyleForm (ruleName, title, cssPropOpts) {
-
-		var $inputGroup  = $("<div />")
-				.addClass("nice-calendar-opts-group"),
-			$input;
-
-		this.ruleName    = ruleName;
-		this.$inputs     = {};
-
-		cssCustomSettings[ruleName] = {};
-
-		// Create input elements
-		for (var i = 0, ii = cssPropOpts.length; i < ii; i++) {
-
-			// Create input element
-			$input = createInput(cssPropOpts[i].method);
-
-			// Bind event to input
-			$input.bind(
-				"change",
-				(function (_this, cssProp) {
-					if (cssProp === "fontWeight") {
-						return function () {setProp(ruleName, cssProp, (this.checked)? "bold" : "normal");};
-					}
-					else if (cssProp === "fontStyle") {
-						return function () {setProp(ruleName, cssProp, (this.checked)? "italic" : "normal");};
-					}
-					else {
-						return function () {setProp(ruleName, cssProp, this.value);};
-					}
-				})(this, cssPropOpts[i].cssProp)
-			)
-
-			// Append input and label to group div
-			$inputGroup.append(
-				$("<p />")
-					.text(cssPropOpts[i].label + ": ")
-					.append(this.$inputs[cssPropOpts[i].cssProp] = ($input))
-			);
-		}
-
-		// Append group div to page
-		UI.$opts
-			.append(
-				$("<div />")
-					.addClass("nice-calendar-opts-section")
-					.append(
-						$("<h2 />")
-						.addClass("nice-calendar-opts-title")
-						.text(title)
-					)
-					.append($inputGroup)
-			);
-	}
-
 	function setProp (ruleName, cssProp, cssVal) {
 		var $input;
-		if (cssStyleInterface[ruleName].inputs) {
-			$input = cssStyleInterface[ruleName].inputs.$inputs[cssProp];
-		}
 		cssVal = cssVal.toLowerCase();
+
+		// Update corresponding input elements
+		if (cssStyleInterface[ruleName].$inputs) {
+			$input = cssStyleInterface[ruleName].$inputs[cssProp];
+		}
 		if ($input) {
 			$input.val(cssVal);
 			if (cssProp === "fontWeight") {
@@ -456,10 +502,30 @@
 			else if (cssProp === "fontStyle")  {
 				$input.attr("checked", !!(cssVal === "italic"));
 			}
+			else if ($input.attr("type") === "color") {
+				$input.spectrum("set", cssVal);
+			}
 		}
-		if (!cssCustomSettings[ruleName]) cssCustomSettings[ruleName] = {};
+
+		// Set and store CSS property value
+		if (!cssCustomSettings[ruleName]) {
+			cssCustomSettings[ruleName] = {};
+		}
 		cssCustomSettings[ruleName][cssProp] = cssStyleInterface[ruleName].cssRule.style[cssProp] = cssVal;
+
+		// return value
+		return cssStyleInterface[ruleName].cssRule.cssText;
 	};
+
+	function applyStyles (cssSettings) {
+		for (var r in cssSettings)
+		if (cssSettings.hasOwnProperty(r)) {
+			for (var p in cssSettings[r])
+			if (cssSettings[r].hasOwnProperty(p)) {
+				setProp(r, p, cssSettings[r][p]);
+			}
+		}
+	}
 
 	// Utilities
 
