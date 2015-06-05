@@ -1,62 +1,94 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en-US">
 
 <head>
+
 	<meta charset="utf-8" />
 	<meta name="viewport"    content="width=device-width, initial-scale=1" />
-	<meta name="description" content="Blah." />
+	<meta name="description" content="A basic tool for creating and printing calendars." />
 	<meta name="author"      content="Ken Sugiura" />
 
 	<!--
 
-	Nice Calendar
+	Print-a-Calendar
 
-		A minimal calendar builder.
+		A basic tool for creating and printing calendars.
 
-	Contributors:
-		reddit.com/u/krikienoid
+	Author:
+		u/krikienoid
 
 	MIT License 2014
 
 	-->
 
-	<title>Nice Calendar</title>
+	<title>Print-a-Calendar</title>
 
 	<!-- Libraries -->
 	<link type="text/css" rel="stylesheet" href="spectrum/spectrum.css" />
 	<script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="spectrum/spectrum.js"></script>
-	<script type="text/javascript" src="js/font.js"></script>
+	<script type="text/javascript" src="js/zoomport.js"></script>
 
 	<!-- Main -->
-	<link   type="text/css" rel="stylesheet" href="css/nicecalendar.css" />
-	<script type="text/javascript" src="js/nicecalendar.js"></script>
+	<link   type="text/css" rel="stylesheet" href="css/printacalendar.css" />
+	<script type="text/javascript" src="js/printacalendar.js"></script>
+
 </head>
 
 <body>
+
 	<div class="wrapper-main" data-role="page">
-		<div class="wrapper-head">
-			<div class="wrapper-head-title">
-				<h1 class="nice-calendar-header">Nice Calendar</h1>
-				<p class="nice-calendar-year">
-					Year: <input class="nice-calendar-input" type="text" size="4" maxlength="4" id="nice-calendar-year" />
-					<input class="nice-calendar-input" type="button" value="Print" id="nice-calendar-print" />
-					<input class="nice-calendar-input show-opts" type="button" value="&#x2630" id="nice-calendar-show-opts" />
-				</p>
+
+		<div class="wrapper-head printacal-dropshadow">
+
+			<div class="wrapper-head-head">
+				<div class="wrapper-head-head-title">
+					<h1 class="printacal-header">Print-a-Calendar</h1>
+				</div>
+				<div class="wrapper-head-head-opts">
+					Year:&nbsp;
+					<input class="printacal-input" type="text" size="4" maxlength="4" id="printacal-year" />
+					<input class="printacal-input" type="button" value="Print" id="printacal-print" />
+					<input class="printacal-input show-opts" type="button" value="&#x2630" id="printacal-show-opts" />
+				</div>
 			</div>
-			<div class="wrapper-head-options">
-				<div id="nice-calendar-options"></div>
-			</div>
+
+			<div class="wrapper-head-body" id="printacal-options"></div>
+
 		</div>
+
 		<div class="wrapper-body">
-			<div class="wrapper-view" id="nice-calendar-view"></div>
+
+			<div class="wrapper-body-controls printacal-dropshadow">
+				<div class="wrapper-control-block wrapper-control-zoom">
+					<input class="printacal-input" type="text"   value="" size="6" id="printacal-zoom-input" />
+					<input class="printacal-input" type="button" value="–" id="printacal-zoom-minus" />
+					<input class="printacal-input" type="button" value="+" id="printacal-zoom-plus" />
+					<input class="printacal-input" type="button" value="100%" id="printacal-zoom-reset" />
+					<input class="printacal-input" type="button" value="Fit" id="printacal-zoom-fit" />
+				</div>
+				<div class="wrapper-control-block wrapper-control-month">
+					<div class="wrapper-control-month-left">
+						<a id="printacal-month-prev">&lt;&lt;</a>
+					</div>
+					<div class="wrapper-control-month-center" id="printacal-month-current"></div>
+					<div class="wrapper-control-month-right">
+						<a id="printacal-month-next">&gt;&gt;</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="wrapper-body-view">
+				<div class="wrapper-outerframe" id="printacal-zoomport">
+					<div class="wrapper-innerframe" id="printacal-page-view"></div>
+				</div>
+			</div>
+
 		</div>
+
 	</div>
-	<script type="text/javascript">
-		$(document).ready(function () {font.setup();});
-		$(document).ready(function () {niceCalendar.init();});
-	</script>
+
 </body>
 
 </html>

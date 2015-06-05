@@ -1,33 +1,31 @@
-# Printable Calendar Maker
+# Printable Calendars
 
-###### A minimal calendar builder.
-
- -- working version --
-
-[Demo HERE](http://krikienoid.github.io/nicecalendar/index.html)
+###### A basic tool for creating and printing calendars.
 
 
-## Printable Calendar Maker
+[LINK](http://krikienoid.github.io/printacalendar/index.html)
 
- - Editable calendar made using HTML and CSS
- - Adjustable size
- - Printable
 
-#### Note:
+## Info
 
-Although the UI is somewhat limited, the calendar's CSS can be fully edited through the method:
+This is a basic web app for designing and printing simple calendars.
+Colors, size, fonts, and other features can be customized.
+
+#### Note
+
+The calendar's CSS can be fully edited using the method:
 ```javascript
-niceCalendar.setProp(cssRuleName, cssPropertyName, cssValue);
+    printacal.setStyleProp(ruleName, cssPropertyName, cssValue);
 ```
-cssRuleName can be determined via the element's className, so
+ruleName is used to target a class elements in the calendar and can be determined via the element's className, for example,
 ```
-<div class="nice-calendar-date custom">26</div>
+    <div class="printacal-date printacal-custom">26</div>
 ```
-would have the cssRuleName "date".
+would have the ruleName "date".
 
 Example:
 ```javascript
-niceCalendar.setProp("date", "fontFamily", "Arial");
+    printacal.setStyleProp("date", "fontFamily", "Arial");
 ```
 
 ## License
