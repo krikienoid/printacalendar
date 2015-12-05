@@ -401,7 +401,9 @@
 
     function initMonthControls () {
 
-        var monthIndex = 0;
+        var monthIndex = 0,
+            KEY_PREV   = 219,
+            KEY_NEXT   = 221;
 
         function updateMonth () {
             if (monthIndex < 0) {monthIndex += MONTHS.length;}
@@ -424,10 +426,10 @@
         $('#printacal-month-prev').on('click', prevMonth);
         $('#printacal-month-next').on('click', nextMonth);
         $(document).on('keydown', function (e) {
-            if (e.which === 37 || e.keycode === 37) { // Left
+            if (e.which === KEY_PREV || e.keycode === KEY_PREV) { // Left
                 prevMonth();
             }
-            else if (e.which === 39 || e.keycode === 39) { // Right
+            else if (e.which === KEY_NEXT || e.keycode === KEY_NEXT) { // Right
                 nextMonth();
             }
         });
