@@ -43,6 +43,7 @@
 	.wrapper-head-head-title,
 	.wrapper-head-head-opts,
 	.wrapper-head-body,
+	.wrapper-head-foot,
 	.wrapper-body,
 	.wrapper-body-view,
 	.wrapper-outerframe,
@@ -60,6 +61,7 @@
 
 		.wrapper-head-head,
 		.wrapper-head-body,
+		.wrapper-head-foot,
 		.wrapper-body-controls {
 			width   : 100%;
 			padding : 8px 16px;
@@ -156,6 +158,7 @@
 		margin-top  : 0;
 		margin-left : -280px;
 		padding-top : 100px;
+		padding-bottom : 32px;
 	}
 
 		.wrapper-head-head {
@@ -167,6 +170,11 @@
 				border              : 0 dotted #fff;
 				border-bottom-width : 1px;
 			}
+
+		.wrapper-head-foot {
+			height        : 32px;
+			margin-bottom : -32px;
+		}
 
 	.wrapper-body {
 		padding-top : 40px;
@@ -270,7 +278,7 @@
 		border-top-width  : 1px;
 		color             : #fff;
 		line-height       : 18pt;
-	}	
+	}
 
 	.printacal-opts-section.focus > .printacal-opts-group {
 		height       : auto;
@@ -356,10 +364,12 @@
 		height      : 60px;
 		margin-left : 0;
 		padding-top : 60px;
+		padding-bottom : 0;
 	}
 
 	.wrapper-head.open {
 		height : 100%;
+		padding-bottom : 32px;
 	}
 
 		.wrapper-head-head {

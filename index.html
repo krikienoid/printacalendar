@@ -4,10 +4,12 @@
 
 <head>
 
+	<!-- Meta -->
 	<meta charset="utf-8" />
 	<meta name="viewport"    content="width=device-width, initial-scale=1" />
-	<meta name="description" content="A basic tool for creating and printing calendars." />
 	<meta name="author"      content="Ken Sugiura" />
+	<meta name="description" content="A basic tool for creating and printing calendars." />
+	<meta name="keywords"    content="Calendar, Customize, Custom, Print, Printable" />
 
 	<!--
 
@@ -42,7 +44,7 @@
 
 		<div class="wrapper-head printacal-dropshadow">
 
-			<div class="wrapper-head-head">
+			<header class="wrapper-head-head">
 				<div class="wrapper-head-head-title">
 					<h1 class="printacal-header">Print-a-Calendar</h1>
 				</div>
@@ -52,15 +54,19 @@
 					<input class="printacal-input" type="button" value="Print" id="printacal-print" />
 					<input class="printacal-input show-opts" type="button" value="&#x2630" id="printacal-show-opts" />
 				</div>
-			</div>
+			</header>
 
-			<div class="wrapper-head-body" id="printacal-options"></div>
+			<aside class="wrapper-head-body" id="printacal-options"></aside>
+
+			<footer class="wrapper-head-foot">
+				<a href="https://github.com/krikienoid/printacalendar">Link to Github</a>
+			</footer>
 
 		</div>
 
 		<div class="wrapper-body">
 
-			<div class="wrapper-body-controls printacal-dropshadow">
+			<aside class="wrapper-body-controls printacal-dropshadow">
 				<div class="wrapper-control-block wrapper-control-zoom">
 					<input class="printacal-input" type="text"   value="" size="6" id="printacal-zoom-input" />
 					<input class="printacal-input" type="button" value="–" id="printacal-zoom-minus" />
@@ -77,13 +83,13 @@
 						<a id="printacal-month-next">&gt;&gt;</a>
 					</div>
 				</div>
-			</div>
+			</aside>
 
-			<div class="wrapper-body-view">
+			<main class="wrapper-body-view">
 				<div class="wrapper-outerframe" id="printacal-zoomport">
 					<div class="wrapper-innerframe" id="printacal-page-view"></div>
 				</div>
-			</div>
+			</main>
 
 		</div>
 
