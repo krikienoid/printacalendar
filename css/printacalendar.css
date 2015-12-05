@@ -14,512 +14,512 @@
 /* //// Common //// */
 
 * {
-	margin   : 0;
-	padding  : 0;
-	overflow : hidden;
-	box-sizing         : border-box;
-	-moz-box-sizing    : border-box;
-	-webkit-box-sizing : border-box;
+    margin   : 0;
+    padding  : 0;
+    overflow : hidden;
+    box-sizing         : border-box;
+    -moz-box-sizing    : border-box;
+    -webkit-box-sizing : border-box;
 }
 
 /* //// Screen Mode //// */
 
 @media screen {
 
-	/* //// Basic Structure //// */
-
-	/* Main */
-
-	html,
-	body,
-	.wrapper-main {
-		width  : 100%;
-		height : 100%;
-	}
-
-	.wrapper-main,
-	.wrapper-head,
-	.wrapper-head-head,
-	.wrapper-head-head-title,
-	.wrapper-head-head-opts,
-	.wrapper-head-body,
-	.wrapper-head-foot,
-	.wrapper-body,
-	.wrapper-body-view,
-	.wrapper-outerframe,
-	.wrapper-innerframe,
-	.wrapper-body-controls,
-	.wrapper-control-block {
-		float : left;
-	}
-
-	/* Head */
-
-	.wrapper-head {
-		position : absolute;
-	}
-
-		.wrapper-head-head,
-		.wrapper-head-body,
-		.wrapper-head-foot,
-		.wrapper-body-controls {
-			width   : 100%;
-			padding : 8px 16px;
-		}
-
-			.wrapper-head-head-title,
-			.wrapper-head-head-opts {
-				margin : 8px 0;
-			}
-
-		.wrapper-head-body {
-			height     : 100%;
-			overflow-y : auto;
-		}
-
-	/* Body */
-
-	.wrapper-body,
-	.wrapper-body-view,
-	.wrapper-outerframe {
-		width  : 100%;
-		height : 100%;
-		background-color : #dcdcdc;
-	}
-
-		/* View */
-
-		.wrapper-outerframe {
-			overflow : auto;
-		}
-
-			.wrapper-innerframe {
-				overflow : visible;
-				padding  : 20px;
-			}
-
-				.printacal-calendar-pageframe {
-					display : none;
-				}
-
-				.printacal-calendar-pageframe.active {
-					display : block;
-				}
-
-		/* Controls */
-
-			.wrapper-control-block {
-				height : 100%;
-				white-space : nowrap;
-			}
-
-			.wrapper-control-zoom {
-				width : 360px;
-			}
-
-			.wrapper-control-month {
-				float         : right;
-				padding-right : 60px;
-				padding-left  : 60px;
-			}
-
-				.wrapper-control-month-left,
-				.wrapper-control-month-right,
-				.wrapper-control-month-center {
-					float      : left;
-					margin     : 4px 0;
-					text-align : center;
-				}
-
-				.wrapper-control-month-left {
-					width : 60px;
-					margin-left : -60px;
-				}
-
-				.wrapper-control-month-right {
-					width : 60px;
-					margin-right : -60px;
-				}
-				.wrapper-control-month-center {
-					width     : 100%;
-					min-width : 100px;
-				}
-
-	/* Default Composition */
-
-	.wrapper-main {
-		padding-top  : 0;
-		padding-left : 280px;
-	}
-
-	.wrapper-head {
-		width       : 280px;
-		height      : 100%;
-		margin-top  : 0;
-		margin-left : -280px;
-		padding-top : 100px;
-		padding-bottom : 32px;
-	}
-
-		.wrapper-head-head {
-			height     : 100px;
-			margin-top : -100px;
-		}
-
-			.wrapper-head-head-title {
-				border              : 0 dotted #fff;
-				border-bottom-width : 1px;
-			}
-
-		.wrapper-head-foot {
-			height        : 32px;
-			margin-bottom : -32px;
-		}
-
-	.wrapper-body {
-		padding-top : 40px;
-	}
-
-		.wrapper-body-controls {
-			height     : auto;
-			min-height : 40px;
-			margin-top : -40px;
-		}
-
-	/* //// Styles //// */
-
-	/* Common */
-
-	a {
-		cursor  : pointer;
-	}
-
-	/* Typography */
-
-	h1, h2, h3, h4, h5, h6,
-	.printacal-input[type="button"] {
-		font-family : Georgia, serif;
-	}
-
-	div, p, table,
-	.printacal-opts-section,
-	.printacal-input {
-		font-family : Verdana, Geneva, sans-serif;
-	}
-
-	.printacal-opts-section,
-	.printacal-input.opts {
-		font-size : 10pt;
-	}
-
-	.printacal-input,
-	.printacal-opts-header {
-		font-size : 12pt;
-	}
-
-	.printacal-input[type="button"] {
-		font-size : 14pt;
-	}
-
-	h1 {
-		font-size : 20pt;
-	}
-
-	/* Blocks */
-
-	.printacal-dropshadow {
-		position   : relative;
-		z-index    : 1;
-		box-shadow : 4px 4px 16px rgba(0, 0, 0, 0.8);
-	}
-
-	.wrapper-head,
-	.wrapper-body-controls {
-		color            : #fff;
-	}
-
-	.wrapper-head {
-		background-color : #696969;
-	}
-
-	.wrapper-head-head,
-	.wrapper-body-controls {
-		background-color : #000;
-		border-bottom    : 2px solid #fff;
-	}
-
-	/* Input Section */
-
-	.printacal-opts-section {
-		float  : left;
-		width  : 100%;
-		margin : 8px 0;
-	}
-
-	.printacal-opts-header {
-		padding : 2px 8px;
-		color   : #dcdcdc;
-	}
-
-	.printacal-opts-section.focus > .printacal-opts-header {
-		color   : #fff;
-	}
-
-	.printacal-opts-header > a:hover,
-	.printacal-opts-section.focus > .printacal-opts-header > a:hover {
-		color   : #f08080;
-	}
-
-	.printacal-opts-group {
-		height            : 0;
-		padding           : 0;
-		border            : 0 solid #dcdcdc;
-		border-left-width : 1px;
-		border-top-width  : 1px;
-		color             : #fff;
-		line-height       : 18pt;
-	}
-
-	.printacal-opts-section.focus > .printacal-opts-group {
-		height       : auto;
-		padding      : 4px 16px;
-		border-color : #fff;
-	}
-
-	.printacal-input.show-opts {
-		display : none;
-	}
-
-	/* Inputs */
-
-	.printacal-input {
-		height           : 24px;
-		margin           : 2px;
-		padding          : 0 8px;
-		background-color : #333;
-		border           : 1px solid #fff;
-		border-radius    : 4px;
-		color            : #fff;
-	}
-
-	.printacal-input.opts {
-		height : 24px;
-	}
-
-	.printacal-input[type="button"] {
-		background-color : #dcdcdc;
-		border-color     : #dcdcdc;
-		color            : #000;
-		cursor           : pointer;
-		vertical-align   : top;
-	}
-
-	.printacal-input[type="button"]:hover {
-		background-color : #fff;
-		border-color     : #fff;
-	}
-
-	.printacal-input[type="button"]:active {
-		color        : #dc143c;
-		border-color : #dc143c;
-	}
-
-	.printacal-input[type="text"]:focus {
-		border-color : #dc143c;
-	}
-
-	.printacal-input[type="checkbox"] {
-		height : 16px;
-		width  : 16px;
-	}
-
-	.printacal-input.opts[type="text"] {
-		width     : 80px;
-		max-width : 50%;
-	}
-
-	/* Override spectrum.js styles */
-
-	.printacal-opts-section .sp-replacer {
-		height  : 20px;
-		padding : 2px;
-	}
-
-	.printacal-opts-section .sp-preview {
-		height : 100%;
-	}
+    /* //// Basic Structure //// */
+
+    /* Main */
+
+    html,
+    body,
+    .wrapper-main {
+        width  : 100%;
+        height : 100%;
+    }
+
+    .wrapper-main,
+    .wrapper-head,
+    .wrapper-head-head,
+    .wrapper-head-head-title,
+    .wrapper-head-head-opts,
+    .wrapper-head-body,
+    .wrapper-head-foot,
+    .wrapper-body,
+    .wrapper-body-view,
+    .wrapper-outerframe,
+    .wrapper-innerframe,
+    .wrapper-body-controls,
+    .wrapper-control-block {
+        float : left;
+    }
+
+    /* Head */
+
+    .wrapper-head {
+        position : absolute;
+    }
+
+        .wrapper-head-head,
+        .wrapper-head-body,
+        .wrapper-head-foot,
+        .wrapper-body-controls {
+            width   : 100%;
+            padding : 8px 16px;
+        }
+
+            .wrapper-head-head-title,
+            .wrapper-head-head-opts {
+                margin : 8px 0;
+            }
+
+        .wrapper-head-body {
+            height     : 100%;
+            overflow-y : auto;
+        }
+
+    /* Body */
+
+    .wrapper-body,
+    .wrapper-body-view,
+    .wrapper-outerframe {
+        width  : 100%;
+        height : 100%;
+        background-color : #dcdcdc;
+    }
+
+        /* View */
+
+        .wrapper-outerframe {
+            overflow : auto;
+        }
+
+            .wrapper-innerframe {
+                overflow : visible;
+                padding  : 20px;
+            }
+
+                .printacal-calendar-pageframe {
+                    display : none;
+                }
+
+                .printacal-calendar-pageframe.active {
+                    display : block;
+                }
+
+        /* Controls */
+
+            .wrapper-control-block {
+                height : 100%;
+                white-space : nowrap;
+            }
+
+            .wrapper-control-zoom {
+                width : 360px;
+            }
+
+            .wrapper-control-month {
+                float         : right;
+                padding-right : 60px;
+                padding-left  : 60px;
+            }
+
+                .wrapper-control-month-left,
+                .wrapper-control-month-right,
+                .wrapper-control-month-center {
+                    float      : left;
+                    margin     : 4px 0;
+                    text-align : center;
+                }
+
+                .wrapper-control-month-left {
+                    width : 60px;
+                    margin-left : -60px;
+                }
+
+                .wrapper-control-month-right {
+                    width : 60px;
+                    margin-right : -60px;
+                }
+                .wrapper-control-month-center {
+                    width     : 100%;
+                    min-width : 100px;
+                }
+
+    /* Default Composition */
+
+    .wrapper-main {
+        padding-top  : 0;
+        padding-left : 280px;
+    }
+
+    .wrapper-head {
+        width       : 280px;
+        height      : 100%;
+        margin-top  : 0;
+        margin-left : -280px;
+        padding-top : 100px;
+        padding-bottom : 32px;
+    }
+
+        .wrapper-head-head {
+            height     : 100px;
+            margin-top : -100px;
+        }
+
+            .wrapper-head-head-title {
+                border              : 0 dotted #fff;
+                border-bottom-width : 1px;
+            }
+
+        .wrapper-head-foot {
+            height        : 32px;
+            margin-bottom : -32px;
+        }
+
+    .wrapper-body {
+        padding-top : 40px;
+    }
+
+        .wrapper-body-controls {
+            height     : auto;
+            min-height : 40px;
+            margin-top : -40px;
+        }
+
+    /* //// Styles //// */
+
+    /* Common */
+
+    a {
+        cursor  : pointer;
+    }
+
+    /* Typography */
+
+    h1, h2, h3, h4, h5, h6,
+    .printacal-input[type="button"] {
+        font-family : Georgia, serif;
+    }
+
+    div, p, table,
+    .printacal-opts-section,
+    .printacal-input {
+        font-family : Verdana, Geneva, sans-serif;
+    }
+
+    .printacal-opts-section,
+    .printacal-input.opts {
+        font-size : 10pt;
+    }
+
+    .printacal-input,
+    .printacal-opts-header {
+        font-size : 12pt;
+    }
+
+    .printacal-input[type="button"] {
+        font-size : 14pt;
+    }
+
+    h1 {
+        font-size : 20pt;
+    }
+
+    /* Blocks */
+
+    .printacal-dropshadow {
+        position   : relative;
+        z-index    : 1;
+        box-shadow : 4px 4px 16px rgba(0, 0, 0, 0.8);
+    }
+
+    .wrapper-head,
+    .wrapper-body-controls {
+        color            : #fff;
+    }
+
+    .wrapper-head {
+        background-color : #696969;
+    }
+
+    .wrapper-head-head,
+    .wrapper-body-controls {
+        background-color : #000;
+        border-bottom    : 2px solid #fff;
+    }
+
+    /* Input Section */
+
+    .printacal-opts-section {
+        float  : left;
+        width  : 100%;
+        margin : 8px 0;
+    }
+
+    .printacal-opts-header {
+        padding : 2px 8px;
+        color   : #dcdcdc;
+    }
+
+    .printacal-opts-section.focus > .printacal-opts-header {
+        color   : #fff;
+    }
+
+    .printacal-opts-header > a:hover,
+    .printacal-opts-section.focus > .printacal-opts-header > a:hover {
+        color   : #f08080;
+    }
+
+    .printacal-opts-group {
+        height            : 0;
+        padding           : 0;
+        border            : 0 solid #dcdcdc;
+        border-left-width : 1px;
+        border-top-width  : 1px;
+        color             : #fff;
+        line-height       : 18pt;
+    }
+
+    .printacal-opts-section.focus > .printacal-opts-group {
+        height       : auto;
+        padding      : 4px 16px;
+        border-color : #fff;
+    }
+
+    .printacal-input.show-opts {
+        display : none;
+    }
+
+    /* Inputs */
+
+    .printacal-input {
+        height           : 24px;
+        margin           : 2px;
+        padding          : 0 8px;
+        background-color : #333;
+        border           : 1px solid #fff;
+        border-radius    : 4px;
+        color            : #fff;
+    }
+
+    .printacal-input.opts {
+        height : 24px;
+    }
+
+    .printacal-input[type="button"] {
+        background-color : #dcdcdc;
+        border-color     : #dcdcdc;
+        color            : #000;
+        cursor           : pointer;
+        vertical-align   : top;
+    }
+
+    .printacal-input[type="button"]:hover {
+        background-color : #fff;
+        border-color     : #fff;
+    }
+
+    .printacal-input[type="button"]:active {
+        color        : #dc143c;
+        border-color : #dc143c;
+    }
+
+    .printacal-input[type="text"]:focus {
+        border-color : #dc143c;
+    }
+
+    .printacal-input[type="checkbox"] {
+        height : 16px;
+        width  : 16px;
+    }
+
+    .printacal-input.opts[type="text"] {
+        width     : 80px;
+        max-width : 50%;
+    }
+
+    /* Override spectrum.js styles */
+
+    .printacal-opts-section .sp-replacer {
+        height  : 20px;
+        padding : 2px;
+    }
+
+    .printacal-opts-section .sp-preview {
+        height : 100%;
+    }
 
 }
 
 @media screen and (max-width : 640px) {
 
-	/* Tall layout */
+    /* Tall layout */
 
-	.wrapper-main {
-		padding-left : 0;
-	}
+    .wrapper-main {
+        padding-left : 0;
+    }
 
-	.wrapper-head {
-		width       : 100%;
-		height      : 60px;
-		margin-left : 0;
-		padding-top : 60px;
-		padding-bottom : 0;
-	}
+    .wrapper-head {
+        width       : 100%;
+        height      : 60px;
+        margin-left : 0;
+        padding-top : 60px;
+        padding-bottom : 0;
+    }
 
-	.wrapper-head.open {
-		height : 100%;
-		padding-bottom : 32px;
-	}
+    .wrapper-head.open {
+        height : 100%;
+        padding-bottom : 32px;
+    }
 
-		.wrapper-head-head {
-			height     : 60px;
-			margin-top : -60px;
-		}
+        .wrapper-head-head {
+            height     : 60px;
+            margin-top : -60px;
+        }
 
-			.wrapper-head-head-title,
-			.wrapper-head-head-opts {
-				height : 100%;
-			}
+            .wrapper-head-head-title,
+            .wrapper-head-head-opts {
+                height : 100%;
+            }
 
-			.wrapper-head-head-title {
-				padding-right       : 16px;
-				border-bottom-width : 0;
-				border-right-width  : 1px;
-			}
+            .wrapper-head-head-title {
+                padding-right       : 16px;
+                border-bottom-width : 0;
+                border-right-width  : 1px;
+            }
 
-			.wrapper-head-head-opts {
-				position : absolute;
-				right    : 16px;
-			}
+            .wrapper-head-head-opts {
+                position : absolute;
+                right    : 16px;
+            }
 
-	.wrapper-body {
-		padding-top : 72px;
-		padding-bottom : 60px;
-	}
+    .wrapper-body {
+        padding-top : 72px;
+        padding-bottom : 60px;
+    }
 
-		.wrapper-body-controls {
-			height      : 72px;
-			margin-top  : -72px;
-		}
+        .wrapper-body-controls {
+            height      : 72px;
+            margin-top  : -72px;
+        }
 
-			.wrapper-control-block {
-				width  : 100%;
-				height : auto;
-			}
+            .wrapper-control-block {
+                width  : 100%;
+                height : auto;
+            }
 
-	/* Style */
+    /* Style */
 
-	.printacal-header {
-		font-size : 16pt;
-	}
+    .printacal-header {
+        font-size : 16pt;
+    }
 
-	.printacal-input.show-opts {
-		display : inline-block;
-	}
+    .printacal-input.show-opts {
+        display : inline-block;
+    }
 
 }
 
 @media screen and (max-width : 470px) {
 
-	/* Narrow Layout */
+    /* Narrow Layout */
 
-	.wrapper-head-head-title {
-		width    : 100px;
-		position : relative;
-		z-index  : 1;
-		background-color : #000;
-	}
+    .wrapper-head-head-title {
+        width    : 100px;
+        position : relative;
+        z-index  : 1;
+        background-color : #000;
+    }
 
-	.wrapper-head-head-opts {
-		width       : auto;
-		font-size   : 14pt;
-	}
+    .wrapper-head-head-opts {
+        width       : auto;
+        font-size   : 14pt;
+    }
 
-	/* Style */
+    /* Style */
 
-	.printacal-header {
-		font-size : 10pt;
-	}
+    .printacal-header {
+        font-size : 10pt;
+    }
 
 }
 
 /* //// Print Mode //// */
 
 @page {
-	size   : auto;
-	margin : 0 0 0 0;
+    size   : auto;
+    margin : 0 0 0 0;
 }
 
 @media print {
 
-	/* Main */
+    /* Main */
 
-	html,
-	body,
-	.wrapper-main,
-	.wrapper-body,
-	.wrapper-body-view,
-	.wrapper-outerframe,
-	.wrapper-innerframe {
-		width      : auto;
-		height     : auto;
-		float      : left;
-		padding    : 0;
-		overflow   : visible;
-		background : none;
-	}
+    html,
+    body,
+    .wrapper-main,
+    .wrapper-body,
+    .wrapper-body-view,
+    .wrapper-outerframe,
+    .wrapper-innerframe {
+        width      : auto;
+        height     : auto;
+        float      : left;
+        padding    : 0;
+        overflow   : visible;
+        background : none;
+    }
 
-	.wrapper-head,
-	.wrapper-body-controls {
-		display : none;
-	}
+    .wrapper-head,
+    .wrapper-body-controls {
+        display : none;
+    }
 
-	/* Override zoomport.js effects */
-	/* Ensure calendar is correct scale */
-	.wrapper-innerframe {
-		top                      : 0        !important;
-		left                     : 0        !important;
-		transform-origin         : 0 0 0    !important;
-		-o-transform-origin      : 0 0 0    !important;
-		-ms-transform-origin     : 0 0 0    !important;
-		-moz-transform-origin    : 0 0 0    !important;
-		-webkit-transform-origin : 0 0 0    !important;
-		transform                : scale(1) !important;
-		-o-transform             : scale(1) !important;
-		-ms-transform            : scale(1) !important;
-		-moz-transform           : scale(1) !important;
-		-webkit-transform        : scale(1) !important;
-		zoom                     : 1        !important;
-	}
+    /* Override zoomport.js effects */
+    /* Ensure calendar is correct scale */
+    .wrapper-innerframe {
+        top                      : 0        !important;
+        left                     : 0        !important;
+        transform-origin         : 0 0 0    !important;
+        -o-transform-origin      : 0 0 0    !important;
+        -ms-transform-origin     : 0 0 0    !important;
+        -moz-transform-origin    : 0 0 0    !important;
+        -webkit-transform-origin : 0 0 0    !important;
+        transform                : scale(1) !important;
+        -o-transform             : scale(1) !important;
+        -ms-transform            : scale(1) !important;
+        -moz-transform           : scale(1) !important;
+        -webkit-transform        : scale(1) !important;
+        zoom                     : 1        !important;
+    }
 
-	.printacal-calendar-pageframe {
-		float  : left;
-		margin : 0;
-		page-break-before : always;
-		page-break-inside : avoid;
-	}
+    .printacal-calendar-pageframe {
+        float  : left;
+        margin : 0;
+        page-break-before : always;
+        page-break-inside : avoid;
+    }
 
 }
 
 /* //// Calendar Layout //// */
 
 .printacal-calendar-pageframe {
-	overflow         : hidden;
-	background-color : #fff;
+    overflow         : hidden;
+    background-color : #fff;
 }
 
 .printacal-calendar-innerframe,
 .printacal-calendar-innerdayframe {
-	float             : none;
-	margin            : auto;
-	position          : relative;
-	top               : 50%;
-	-o-transform      : translateY(-50%);
-	-ms-transform     : translateY(-50%);
-	-moz-transform    : translateY(-50%);
-	-webkit-transform : translateY(-50%);
-	transform         : translateY(-50%);
+    float             : none;
+    margin            : auto;
+    position          : relative;
+    top               : 50%;
+    -o-transform      : translateY(-50%);
+    -ms-transform     : translateY(-50%);
+    -moz-transform    : translateY(-50%);
+    -webkit-transform : translateY(-50%);
+    transform         : translateY(-50%);
 }
 
 /* Calendar Appearance */
@@ -529,50 +529,50 @@
 .printacal-calendar-innerframe,
 .printacal-calendar-weekframe,
 .printacal-calendar-gridframe {
-	width : 100%;
+    width : 100%;
 }
 
 .printacal-calendar-outerframe {
-	height   : 100%;
-	overflow : visible;
+    height   : 100%;
+    overflow : visible;
 }
 
 .printacal-calendar-headerframe {
-	position : relative;
-	z-index  : 1;
-	overflow : visible;
+    position : relative;
+    z-index  : 1;
+    overflow : visible;
 }
 
 .printacal-calendar-headermonth,
 .printacal-calendar-headeryear {
-	position : absolute;
+    position : absolute;
 }
 
 .printacal-calendar-weekdayframe,
 .printacal-calendar-dayframe {
-	display : block;
-	float   : left;
-	width   : 14.2857%;
+    display : block;
+    float   : left;
+    width   : 14.2857%;
 }
 
 .printacal-calendar-weekdayframe {
-	height  : 100%;
+    height  : 100%;
 }
 
 .printacal-calendar-dayframe {
-	height  : 16.6667%;
+    height  : 16.6667%;
 }
 
 .printacal-calendar-dayframe.blank {
-	visibility : hidden;
+    visibility : hidden;
 }
 
 .printacal-calendar-innerdayframe {
-	position : relative;
-	width    : 100%;
-	height   : 100%;
+    position : relative;
+    width    : 100%;
+    height   : 100%;
 }
 
 .printacal-calendar-date {
-	position : absolute;
+    position : absolute;
 }
